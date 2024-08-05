@@ -72,15 +72,15 @@ It is used for generating the `blockchain-XXX.json` in which servers' ip/port is
 
 A config for transporting the required binaries (blockchain, solc, etc.) and scripts to the remote servers.
 
-It specifies the relevant file paths.
+It specifies the relevant file paths and it cannot be changed.
 
 ```json
 {
-    "local_files": "./blockchain", // 本地需要压缩打包的文件夹路径
-    "local_tar": "./deploy_nodes/deploy/blockchain.tar", // 打包之后待发送的文件路径
-    "remote_tar": "/root/workspace/blockchain.tar", // 发送到区块链节点容器的目的文件路径
-    "remote_files": "/root/workspace/blockchain", // 区块链节点容器中目的文件解压后的路径
-    "cache_pid_dir": "/root/workspace/cache_pid" // 区块链节点容器中程序的进程id，主要用于kill远程进程
+    "local_files": "./blockchain", 
+    "local_tar": "./deploy_nodes/deploy/blockchain.tar", 
+    "remote_tar": "/root/workspace/blockchain.tar", 
+    "remote_files": "/root/workspace/blockchain", 
+    "cache_pid_dir": "/root/workspace/cache_pid" 
 }
 ```
 
