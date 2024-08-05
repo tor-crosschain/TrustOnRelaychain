@@ -2,6 +2,8 @@
 
 ToR (**T**rust **o**n **R**elay chain): A Highly Scalable, General and Secure Cross-Chain Protocol.
 
+*The detailed proof of workload optimization ratio is in `proof/proof_details.pdf`.*
+
 ## Setup on remote servers
 
 The blockchains are deployed in a specified docker container, which has installed all required tools.
