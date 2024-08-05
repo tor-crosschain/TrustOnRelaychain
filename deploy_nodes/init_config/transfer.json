@@ -1,0 +1,7 @@
+{
+    "local_files": "./blockchain",
+    "local_tar": "./deploy_nodes/deploy/blockchain.tar",
+    "remote_tar": "/root/workspace/blockchain.tar",
+    "remote_files": "/root/workspace/blockchain",
+    "cache_pid_dir": "/root/workspace/cache_pid"
+}

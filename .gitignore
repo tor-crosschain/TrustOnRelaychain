@@ -1,0 +1,48 @@
+# IDE configs
+.vscode
+.VSCodeCounter
+.idea
+__pycache__
+
+# config db
+config_db
+
+# notes
+todolist.md
+
+# ethereum AND blockchain chaindata
+blockchain/*/*/data
+blockchain/nohup.out
+blockchain/chain.pids
+
+# log
+log
+logs
+*.log
+
+# abi & abi cache
+contracts_abi
+cache
+
+# crosschain block db
+link/db
+
+# crosschain config
+link/link_info
+
+# python
+*.pyc
+
+# sgx
+
+# other
+other
+blockchain.tar
+1.sh
+2.sh
+temp
+
+*.ignore.json
+
+hi.jpg
+payloads

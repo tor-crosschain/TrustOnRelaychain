@@ -1,0 +1,1 @@
+docker run -itd --env COLUMNS=800 --env LINES=100 -p 11001-11010:11001-11010 --name test_sgx 10.21.4.204:5000/yiiguo/sgx:sgx_bu

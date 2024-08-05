@@ -1,0 +1,6 @@
+ETH = 'eth'
+ETHPOW = 'eth-pow'
+ETHPOA = 'eth-poa'
+HIT = 'eth-hit'
+BU = 'bu'
+FABRIC = 'fabric'
