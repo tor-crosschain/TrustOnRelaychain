@@ -1,5 +1,7 @@
 # ToR
 
+ToR (**T**rust **o**n **R**elay chain): A Highly Scalable, General and Secure Cross-Chain Protocol.
+
 ## Setup on remote servers
 
 The blockchains are deployed in a specified docker container, which has installed all required tools.
