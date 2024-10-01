@@ -4,7 +4,7 @@ ToR (**T**rust **o**n **R**elay chain): A Highly Scalable, General and Secure Cr
 
 *The supplement material is in [supplements/supplements.pdf](supplements/supplements.pdf).*
 
-## Description
+## Core modules
 
 The ToR protocol implementation's core modules include:
 1. on-chain contract: `./contracts/`
