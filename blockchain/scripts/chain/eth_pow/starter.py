@@ -66,7 +66,7 @@ def start(idx: str, chain_config: dict):
     bootnode = chain_config['bootnode']
     genesis_config = chain_config['genesis_config']
     account_files = chain_config['account_files']
-    geth_cc = os.path.join(setting.BIN_DIR, 'geth_cc')
+    geth_cc = os.path.join(setting.BIN_DIR, 'geth_1.10.0')
     piddir = os.path.join(setting.CACHE_PID, idx)
     child = os.path.join(setting.ROOT_DIR, idx)
     os.makedirs(child)

@@ -27,7 +27,7 @@ from tools.helper.utils_helper import (
     generate_genesis_hit,
 )
 
-GETH_BIN = "./blockchain/bin/geth_cc"
+GETH_BIN = "./blockchain/bin/geth_1.10.0"
 CHAIN_TYPE = setting.CHAINTYPE_POW
 
 class Tool(object):
@@ -156,7 +156,7 @@ class Tool(object):
             while True:
                 try:
                     w = Web3(HTTPProvider(url, {'timeout': 60}))
-                    require(w.isConnected(),"")
+                    require(w.is_connected(),"")
                     break
                 except Exception:
                     self.print_func("check node({}) status, {}".format(url, errcnt))
