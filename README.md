@@ -2,7 +2,7 @@
 
 ToR (**T**rust **o**n **R**elay chain): A Highly Scalable, General and Secure Cross-Chain Protocol.
 
-*The supplement material is in [supplements/supplements.pdf](supplements/supplement-material.pdf).*
+*The supplement material is in [supplements/supplement-material.pdf](supplements/supplement-material.pdf).*
 
 ## Core modules
 
