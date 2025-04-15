@@ -6,21 +6,31 @@ from __future__ import annotations
 import os, sys
 import re
 import collections
-
+import setting
+import argparse
 sys.path.insert(0, os.path.abspath("."))
 import subprocess
-from utils.ethsdk import EthSdk
+from tools.sdk.ethsdk import EthSdk
 from typing import List
 from web3.types import TxReceipt
 import math, json
+from tools.helper.config_client_helper import ConfigClient
 
-ETH_PORT = 60001
-ETH_URL = f"http://127.0.0.1:{ETH_PORT}"
+config_name = "parallel_chain"
+config_client = ConfigClient(host=setting.CONFIG_DB_HOST, port=setting.CONFIG_DB_PORT, config_name=config_name)
+chain_configs = config_client.get()
+chain = chain_configs[0]
+node = chain['server_nodes'][0]
+
+ETH_PORT = int(node['port'])
+ETH_HOST = node['host']
+ETH_URL = f"http://{ETH_HOST}:{ETH_PORT}"
 LEAVESNUM = 1000
 OUTPUT_FILE = "./bcr/result/data_{name}.json"
-os.environ["SOLC_BINARY"] = "./bin/solc_0.8.17"
+os.environ["SOLC_BINARY"] = "./blockchain/bin/solc_0.8.17"
 average = lambda x: sum(x) / len(x)
 
+server_setting = json.load(open("./bcr/setting.json"))
 
 class ContractInfo:
     def __init__(self) -> None:
@@ -88,8 +98,11 @@ class ContractManager:
 
 
 def get_durs(txhashes: List[str]):
-    cmd = """ ssh yiiguo@10.21.162.162 -p 50022 "{}" """.format(
-        "docker exec cc_node_yiiguo /bin/bash -c \\\"cat /root/workspace/blockchain/parallel_chain/0/start.log | grep 'yiiguo applyTransaction'\\\""
+    cmd = """ ssh {}@{} -p {} "{}" """.format(
+        server_setting['username'],
+        server_setting['ip'],
+        server_setting['port'],
+        "docker exec tor_cc_env /bin/bash -c \\\"cat /root/workspace/blockchain/parallel_chain/0/start.log | grep 'applyTransaction'\\\""
     )
     with os.popen(cmd) as r:
         pat = re.compile(pattern="dur=(\d+).*txhash=(0x.{64})")
@@ -306,8 +319,30 @@ def exec_UpdateByTree():
     print(f"average_gas: {average_gas}, average_dur: {average_dur}")
 
 
+def get_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--method", 
+        type=str, 
+        required=True, 
+        help="the method names include: null, BCR, UpdateByLeaves, UpdateByTree"
+    )
+    args = parser.parse_args()
+    method = args.method
+    if method not in ["null", "BCR", "UpdateByLeaves", "UpdateByTree"]:
+        raise ValueError(f"unknown method: {method}")
+    return method
+
 def main():
-    # get_durs(["0x98a6bf6b0d1db70ba9c6d5f950a79c0700e97d2baa9e0b9f641b4df077c034b0"])
+    method = get_args()
+    if method == "null":
+        exec_null()
+    elif method == "BCR":
+        exec_BCRUpdateOpt()
+    elif method == "UpdateByLeaves":
+        exec_UpdateByLeaves()
+    elif method == "UpdateByTree":
+        exec_UpdateByTree()
     # print("======================= exec_null =======================")
     # exec_null()
     # print("======================= exec_null finish =======================")
@@ -324,9 +359,9 @@ def main():
     # exec_UpdateByLeaves()
     # print("======================= exec_UpdateByLeaves finish =======================")
 
-    print("======================= exec_UpdateByTree =======================")
-    exec_UpdateByTree()
-    print("======================= exec_UpdateByTree finish =======================")
+    # print("======================= exec_UpdateByTree =======================")
+    # exec_UpdateByTree()
+    # print("======================= exec_UpdateByTree finish =======================")
 
 
 if __name__ == "__main__":

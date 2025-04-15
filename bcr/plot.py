@@ -1,7 +1,6 @@
 import os, sys
 import json
 import math
-from brokenaxes import brokenaxes
 from matplotlib import pyplot as plt
 
 sys.path.insert(0, os.path.abspath("."))

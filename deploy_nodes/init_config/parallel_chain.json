@@ -1,0 +1,21 @@
+[
+    {
+        "chain_name": "parallel_chain_1",
+        "chain_type": "eth-poa",
+        "bootnode": {
+            "host": "1.1.1.1",
+            "port": "60022",
+            "username": "root",
+            "password": "ttfgCbowIy14eZay",
+            "bootnode_key": "parallel_chain_1_bootnode"
+        },
+        "server_nodes": [
+            {
+                "host": "1.1.1.1",
+                "port": "60022",
+                "username": "root",
+                "password": "ttfgCbowIy14eZay"
+            }
+        ]
+    }
+]
