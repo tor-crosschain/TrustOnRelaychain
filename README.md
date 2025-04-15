@@ -1,8 +1,9 @@
-# ToR
+# ToR: A Highly Scalable, General and Secure Cross-Chain Protocol
 
-ToR (**T**rust **o**n **R**elay chain): A Highly Scalable, General and Secure Cross-Chain Protocol.
+> *The supplement material is in [supplements/supplement-material.pdf](supplements/supplement-material.pdf).*
 
-*The supplement material is in [supplements/supplement-material.pdf](supplements/supplement-material.pdf).*
+> This repository covers ToR deployed on Ethereum for realistic evaluations.
+> The simulator version is in another repository [TrustOnRelaychain-Simulator](https://github.com/tor-crosschain/TrustOnRelaychain-Simulator)
 
 ## Core modules
 
